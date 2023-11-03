@@ -23,3 +23,15 @@ def delete(request,taskid):
         task.delete()
         return redirect('/')
     return render(request,'delete.html',{'task':task})
+
+def update(request,taskid):
+    task=Task.objects.get(id=taskid)
+    if request.method == "POST":
+        new_name=request.POST.get('name')
+        new_priority=request.POST.get('priority')
+
+        task.name=new_name
+        task.priority=new_priority
+        task.save()
+        return redirect('/')
+    return render(request,'update.html',{'task':task})
