@@ -4,6 +4,6 @@ from django.urls import path
 
 urlpatterns=[
     path('',views.home,name='home'),
-    # path('result',views.result,name='result')
+    path('delete/<int:taskid>',views.delete,name='delete')
 
 ]

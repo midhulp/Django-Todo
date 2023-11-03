@@ -15,3 +15,11 @@ def home(request):
         obj=Task(name=name,priority=priority)
         obj.save()
     return render(request,"index.html",{'obj':obj1})
+
+
+def delete(request,taskid):
+    task=Task.objects.get(id=taskid)
+    if request.method == "POST":
+        task.delete()
+        return redirect('/')
+    return render(request,'delete.html',{'task':task})
